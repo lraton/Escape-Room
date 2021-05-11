@@ -55,7 +55,7 @@
                         $_SESSION["errore"]="1";
                     }
 
-                    $_SESSION["concluso"]="1";
+                    
                 }else{
                     echo"<h3>Posti non disponibili</h3>";
                     $_SESSION["errore"]="1";
@@ -95,6 +95,7 @@
                     'X-Mailer: PHP/' . phpversion();
 
                 mail($to, $subject, $message, $headers);
+                $_SESSION["concluso"]="1";
             }
 
             echo "<h2>Controlla l'email per verificare la conferma della prenotazione (controllare anche nella cartella spam)</h2>";
@@ -103,6 +104,10 @@
         echo "<h3>Ops qualcosa è andato storto</h3>";
     }
 ?>
+
+<a href=index.php>
+    <input type="button" value="Home">
+</a>
 
 </body>
 
