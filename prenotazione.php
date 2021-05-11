@@ -7,7 +7,7 @@
 
 <head>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
+    <link rel="stylesheet" href="style/style.css">
     <meta charset="UTF-8">
     <title> Escape Room </title>
 </head>
@@ -16,7 +16,7 @@
 <body>
 <?php
 
-    if(isset($_SESSION["nome"])&&isset($_SESSION["cognome"])&&isset($_SESSION["email"])&&isset($_SESSION["data"])&&isset($_SESSION["orario"])){
+    if(isset($_POST["nome"])&&isset($_POST["cognome"])&&isset($_POST["email"])&&isset($_POST["data"])&&isset($_POST["orario"])){
 
         //Conenssione database
         require "datiDB.php";
@@ -33,6 +33,7 @@
         $_SESSION["email"] = $_POST["email"];
         $_SESSION["data"] = $_POST["data"];
         $_SESSION["orario"] = $_POST["orario"];
+        $_SESSION["concluso"]=0;
 
         echo "<h2>Nome: ".$_POST["nome"]."<h2>";
         echo "<h2>Cognome: ".$_POST["cognome"]."<h2>";
