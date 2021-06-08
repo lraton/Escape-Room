@@ -25,7 +25,7 @@
     exit();
     }
 
-    if(isset($_SESSION["nome"])&&isset($_SESSION["cognome"])&&isset($_SESSION["email"])&&isset($_SESSION["data"])&&isset($_SESSION["orario"])&&isset($_POST["posti"])){
+    if(isset($_SESSION["nome"])&&isset($_SESSION["cognome"])&&isset($_SESSION["email"])&&isset($_SESSION["data"])&&isset($_SESSION["orario"])&&isset($_POST["posti"])){ 
 
         if(isset($_SESSION["concluso"]) && $_SESSION["concluso"]==0){
 
