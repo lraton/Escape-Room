@@ -35,18 +35,18 @@
         $_SESSION["orario"] = $_POST["orario"];
         $_SESSION["concluso"]=0;
 
-        echo "<h2>Nome: ".$_POST["nome"]."<h2>";
-        echo "<h2>Cognome: ".$_POST["cognome"]."<h2>";
-        echo "<h2>Email: ".$_POST["email"]."<h2>";
-        echo "<h2>Giorno: ".$_POST["data"]."<h2>";
-        echo "<h2>Orario: ".$_POST["orario"]."<h2>";
+        echo "<h3>Nome: ".$_POST["nome"]."<h3>";
+        echo "<h3>Cognome: ".$_POST["cognome"]."<h3>";
+        echo "<h3>Email: ".$_POST["email"]."<h3>";
+        echo "<h3>Giorno: ".$_POST["data"]."<h3>";
+        echo "<h3>Orario: ".$_POST["orario"]."<h3>";
 
         echo '<form action="concluso.php" method="post">';
         $sql = "SELECT posti_liberi  FROM giornata WHERE data='".$_POST["data"]."' AND orario='".$_POST["orario"]."'";
         $result = $mysqli->query($sql);
         if ($result->num_rows > 0) {
             while($row = $result -> fetch_assoc()) {
-                echo "<h2>Posti liberi: ".$row["posti_liberi"]."<h2>";
+                echo "<h3>Posti liberi: ".$row["posti_liberi"]."<h3>";
                 $postiliberi=$row["posti_liberi"];
             }
         }else{

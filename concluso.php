@@ -70,12 +70,12 @@
         if($_SESSION["errore"]==0){
             echo "<h2>Riepilogo</h2>";
 
-            echo "<h2>Nome: ".$_SESSION["nome"]."<h2>";
-            echo "<h2>Cognome: ".$_SESSION["cognome"]."<h2>";
-            echo "<h2>Email: ".$_SESSION["email"]."<h2>";
-            echo "<h2>Giorno: ".$_SESSION["data"]."<h2>";
-            echo "<h2>Orario: ".$_SESSION["orario"]."<h2>";
-            echo "<h2>Posti prenotati: ".$_POST["posti"]."<h2>";
+            echo "<h3>Nome: ".$_SESSION["nome"]."<h3>";
+            echo "<h3>Cognome: ".$_SESSION["cognome"]."<h3>";
+            echo "<h3>Email: ".$_SESSION["email"]."<h3>";
+            echo "<h3>Giorno: ".$_SESSION["data"]."<h3>";
+            echo "<h3>Orario: ".$_SESSION["orario"]."<h3>";
+            echo "<h3>Posti prenotati: ".$_POST["posti"]."<h3>";
 
             if($_SESSION["concluso"]==0){
                 $to      =  $_SESSION["email"];
@@ -96,6 +96,7 @@
 
                 mail($to, $subject, $message, $headers);
                 $_SESSION["concluso"]="1";
+                session_destroy();
             }
 
             echo "<h2>Controlla l'email per verificare la conferma della prenotazione (controllare anche nella cartella spam)</h2>";
