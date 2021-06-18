@@ -11,9 +11,10 @@ body {
 }
 table{
   border: 10px;
-  border-collapse: collapse;
+  border-collapse: collapse;  
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 }
 input[type=text], select {
     width: 100%;

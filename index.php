@@ -60,7 +60,7 @@
             $resultorario = $mysqli->query($orario);
             if ($resultorario->num_rows > 0) {
                 while($row1 = $resultorario -> fetch_assoc()) {
-                    if($row1["posti_liberi"]<=0){
+                    if($row1["posti_liberi"]<6){
                         echo '<option id="orario" name="orario" value="'.$row1["orario"].'" disabled>'.$row1["orario"].' Posti liberi: '.$row1["posti_liberi"].'</option>';
                     }else{
                         echo '<option id="orario" name="orario" value="'.$row1["orario"].'" >'.$row1["orario"].' Posti liberi: '.$row1["posti_liberi"].'</option>';
