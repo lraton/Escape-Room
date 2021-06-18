@@ -35,13 +35,14 @@
                 Echo "<h2>Lista prenotazioni</h2>";
 
                 echo '<form action="concluso.php" method="post">';
-                $sql1 = "SELECT nome, cognome, email, posti_prenotati, data, orario   FROM prenotazione,giornata WHERE prenotazione.id_giornata=giornata.id_giornata";
+                $sql1 = "SELECT nome, cognome, email, numero, posti_prenotati, data, orario   FROM prenotazione,giornata WHERE prenotazione.id_giornata=giornata.id_giornata";
                 $result1 = $mysqli->query($sql1);
                 echo '<table border=1>';
                 echo '<tr>';
                 echo'<td>Nome</td>';                    
                 echo'<td>Cognome</td>';                   
-                echo'<td>Email</td>';       
+                echo'<td>Email</td>';
+                echo'<td>Telefono</td>';       
                 echo'<td>Posti prenotati</td>'; 
                 echo'<td>Data</td>';  
                 echo'<td>Ora</td>';                                  
@@ -52,6 +53,7 @@
                     echo'<td>'.$row1["nome"].'</td>';                    
                     echo'<td>'.$row1["cognome"].'</td>';                   
                     echo'<td>'.$row1["email"].'</td>';       
+                    echo'<td>'.$row1["numero"].'</td>';    
                     echo'<td>'.$row1["posti_prenotati"].'</td>'; 
                     echo'<td>'.$row1["data"].'</td>';  
                     echo'<td>'.$row1["orario"].'</td>';                                  

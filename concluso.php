@@ -25,7 +25,7 @@
     exit();
     }
 
-    if(isset($_SESSION["nome"])&&isset($_SESSION["cognome"])&&isset($_SESSION["email"])&&isset($_SESSION["data"])&&isset($_SESSION["orario"])&&isset($_POST["posti"])){ 
+    if(isset($_SESSION["nome"])&&isset($_SESSION["cognome"])&&isset($_SESSION["email"])&&isset($_SESSION["telefono"])&&isset($_SESSION["data"])&&isset($_SESSION["orario"])&&isset($_POST["posti"])){ 
 
         if(isset($_SESSION["concluso"]) && $_SESSION["concluso"]==0){
 
@@ -41,8 +41,8 @@
                     $aggiornaposti = "UPDATE giornata SET posti_liberi = ".$postiavanzati." WHERE giornata.id_giornata='".$row["id_giornata"]."'";
                     if ($mysqli->query($aggiornaposti) === TRUE) {
                         //Creo la prenotaizone
-                        $prentoazione = "INSERT INTO prenotazione (nome, cognome, email, posti_prenotati, id_giornata)
-                        VALUES ('".$_SESSION["nome"]."', '".$_SESSION["cognome"]."', '".$_SESSION["email"]."', '".$_POST["posti"]."', '".$row["id_giornata"]."')";
+                        $prentoazione = "INSERT INTO prenotazione (nome, cognome, email, numero, posti_prenotati, id_giornata)
+                        VALUES ('".$_SESSION["nome"]."', '".$_SESSION["cognome"]."', '".$_SESSION["email"]."', '".$_SESSION["telefono"]."', '".$_POST["posti"]."', '".$row["id_giornata"]."')";
                         if ($mysqli->query($prentoazione) === TRUE) {
                             echo "<h2>Prenotazione effettuata</h2>";
                             $_SESSION["errore"]="0";
@@ -73,6 +73,7 @@
             echo "<h3>Nome: ".$_SESSION["nome"]."<h3>";
             echo "<h3>Cognome: ".$_SESSION["cognome"]."<h3>";
             echo "<h3>Email: ".$_SESSION["email"]."<h3>";
+            echo "<h3>Telefono: ".$_SESSION["telefono"]."<h3>";
             echo "<h3>Giorno: ".$_SESSION["data"]."<h3>";
             echo "<h3>Orario: ".$_SESSION["orario"]."<h3>";
             echo "<h3>Posti prenotati: ".$_POST["posti"]."<h3>";
@@ -106,7 +107,7 @@
     }
 ?>
 
-<a href=index.php>
+<a href=index.html>
     <input type="button" value="Home">
 </a>
 

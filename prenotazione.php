@@ -31,6 +31,7 @@
         $_SESSION["nome"] = $_POST["nome"];
         $_SESSION["cognome"] = $_POST["cognome"];
         $_SESSION["email"] = $_POST["email"];
+        $_SESSION["telefono"] = $_POST["telefono"];
         $_SESSION["data"] = $_POST["data"];
         $_SESSION["orario"] = $_POST["orario"];
         $_SESSION["concluso"]=0;
@@ -38,6 +39,7 @@
         echo "<h3>Nome: ".$_POST["nome"]."<h3>";
         echo "<h3>Cognome: ".$_POST["cognome"]."<h3>";
         echo "<h3>Email: ".$_POST["email"]."<h3>";
+        echo "<h3>Telefono: ".$_POST["telefono"]."<h3>";
         echo "<h3>Giorno: ".$_POST["data"]."<h3>";
         echo "<h3>Orario: ".$_POST["orario"]."<h3>";
 
@@ -56,7 +58,7 @@
 
         echo '<label for="posti">Quanti posti vuoi prenotare?</label> <br><br>';
         echo '<select name="posti" id="posti">';
-        for ($i=$postiliberi; $i>0; $i--){
+        for ($i=$postiliberi; $i>1; $i--){
             echo '<option id="posti" name="posti" value="'.$i.'" required>'.$i.'</option>';
         }
                 

@@ -6,10 +6,15 @@ body {
   font-size: 30px;
   line-height: 30px;
   color: white;
-  background: #244750;
+  background: #7c2d2d;
   text-align: center;
 }
-
+table{
+  border: 10px;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+}
 input[type=text], select {
     width: 100%;
     padding: 12px 20px;

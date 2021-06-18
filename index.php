@@ -26,7 +26,7 @@
     }
 
     //Prova query
-    $sql = "SELECT  id_giornata, data  FROM giornata Group by data ";
+    $sql = "SELECT  id_giornata, data  FROM giornata WHERE data='".$_POST["date"]."' Group by data ";
     $result = $mysqli->query($sql);
 
     if ($result->num_rows > 0) {
@@ -45,6 +45,9 @@
 
             echo '<label for="email">Email:</label>';
             echo '<input type="text" id="email" name="email" required><br><br>';
+
+            echo '<label for="telefono">Telefono:</label>';
+            echo '<input type="text" id="telefono" name="telefono" required><br><br>';
 
             echo '<label for="data">Data:</label>';
             echo '<input type="text" id="data" name="data" value="'.$row["data"].'" readonly><br><br>';
@@ -68,7 +71,7 @@
             }
             echo '</select><br><br>';
 
-            echo '<label for="posti">Clicca continua per poter scegliere Quanti posti prenotare</label><br><br>';
+            echo '<label for="posti">Clicca continua per poter scegliere quanti posti prenotare</label><br><br>';
 
             echo '<input type="submit" value="Continua">';
             echo '</fieldset>';
