@@ -70,7 +70,8 @@ div {
   input[type=radio] {
     border: 0px;
     width: 100%;
-    height: 2em;
+    height: 4em;
+    padding:0px;
   }
 
   .table-responsive {
@@ -92,13 +93,25 @@ div {
       white-space: nowrap;
   }
   input[type=submit] {
-    height:60px;
-    font-size: 50px;
+    height:90px;
+    font-size: 60px;
     padding:0px;
   }
   input[type=button] {
-    height:60px;
-    font-size: 50px;
+    height:90px;
+    font-size: 60px;
     padding:0px;
   }
+  input[type=text], select {
+    font-size: 50px;
+    height: 90px;
+  }
+  option{
+    font-size: 50px;
+    height: 90px;
+  }
+  label{
+    font-size: 60px;
+  }
+  
 }
