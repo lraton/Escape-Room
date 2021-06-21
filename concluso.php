@@ -6,7 +6,7 @@
 <html lang="it">
 
 <head>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style/style.css">
     <meta charset="UTF-8">
     <title> Escape Room </title>
@@ -88,9 +88,9 @@
 
                 mail($to, $subject, $message, $headers);
 
-                $to      = 'notari.filippo@outlook.it';
+                $to      = 'prolocosigillo@gmail.com';
                 $subject = 'Prenotazione effettuata';
-                $message = 'E stata effettuata una prenotazione per il giorno '.$_SESSION["data"].' alle ore '.$_SESSION["orario"].' per '.$_POST["posti"].' persone, da parte di '.$_SESSION["nome"].' '.$_SESSION["cognome"].'. Per visualizzare la prenotazione visitare http://escaperoomsigillo.hostinggratis.it/admin.html, Nome: admin Password: admin123 ';
+                $message = 'E stata effettuata una prenotazione per il giorno '.$_SESSION["data"].' alle ore '.$_SESSION["orario"].' per '.$_POST["posti"].' persone, da parte di '.$_SESSION["nome"].' '.$_SESSION["cognome"].'. Email:'.$_SESSION["email"].' Numero: '.$_SESSION["telefono"].'Per visualizzare la prenotazione visitare http://escaperoomsigillo.hostinggratis.it/admin.html, Nome: admin Password: admin123 ';
                 $headers = 'From: escaperoom@sigillo.it' . "\r\n" .
                     'Reply-To:' . "\r\n" .
                     'X-Mailer: PHP/' . phpversion();

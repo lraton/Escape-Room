@@ -1,13 +1,20 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://fonts.googleapis.com/css?family=Cinzel);
 
 body {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  background-image: url("../img/sfondo.png");
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
   font-weight: 100;
   font-size: 30px;
   line-height: 30px;
   color: white;
-  background: #7c2d2d;
   text-align: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#intro{
+  font-family: "Cinzel", Helvetica, Arial, sans-serif;
 }
 table{
   border: 5px solid #ccc;
@@ -30,7 +37,7 @@ input[type=text], select {
   
 input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #af4c4c;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -41,7 +48,7 @@ input[type=submit] {
 
 input[type=button] {
   width: 100%;
-  background-color: #4CAF50;
+  background-color: #af4c4c;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -51,7 +58,7 @@ input[type=button] {
 }
   
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #7c1a1a;
 }
   
 div {
@@ -62,9 +69,12 @@ div {
 
 @media only screen and (max-width: 1200px) {
   body {
-    
+  background-image: url("../img/sfondoverticale.png");
     font-size: 50px;
     line-height: 150%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   }
 
   input[type=radio] {
