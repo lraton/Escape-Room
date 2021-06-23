@@ -59,7 +59,7 @@
      header("Refresh: 5; url=http://prolocosigillo.altervista.org/admin.php");
 
     }else{
-        header("location: admin.html");
+        header("location: admin.php");
         
     }
 

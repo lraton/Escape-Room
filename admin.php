@@ -12,6 +12,16 @@
     <title> Escape Room Admin</title>
 </head>
 
+<script>
+            function selectChanged(){
+                   selezione = document.getElementById("select");
+                   if(selezione.value == "0"){//or whatever th unwanted value is
+                       document.getElementById("elimina").disabled = true;
+                   } else{
+                       document.getElementById("elimina").disabled = false; 
+                   }
+               }          
+</script>
 
 <body>
 <?php
@@ -41,15 +51,14 @@
 
                 $sql1 = "SELECT id_prenotazione, nome, cognome, email, numero, posti_prenotati, data, orario   FROM prenotazione,giornata WHERE prenotazione.id_giornata=giornata.id_giornata";
                 $result1 = $mysqli->query($sql1);
-                echo '<table border=1>';
+                echo '<table border=1 id="listaprenotazioni">';
                 echo '<tr>';
                 echo'<td>Numero</td>';     
                 echo'<td>Nome</td>';                    
-                echo'<td>Cognome</td>';                   
-                echo'<td>Email</td>';
+                echo'<td>Cognome</td>';  
                 echo'<td>Telefono</td>';       
                 echo'<td>Posti prenotati</td>'; 
-                echo'<td>Data</td>';  
+                echo'<td>Data</td>';
                 echo'<td>Ora</td>';                                  
                 echo '</tr>';
                 if ($result1->num_rows > 0) {
@@ -57,8 +66,7 @@
                     echo '<tr>';
                     echo'<td>'.$row1["id_prenotazione"].'</td>';  
                     echo'<td>'.$row1["nome"].'</td>';                    
-                    echo'<td>'.$row1["cognome"].'</td>';                   
-                    echo'<td>'.$row1["email"].'</td>';       
+                    echo'<td>'.$row1["cognome"].'</td>';  
                     echo'<td>'.$row1["numero"].'</td>';    
                     echo'<td>'.$row1["posti_prenotati"].'</td>'; 
                     echo'<td>'.$row1["data"].'</td>';  
@@ -78,19 +86,18 @@
             $resultpronotazioni = $mysqli->query($pronotazioni);
             if ($resultpronotazioni->num_rows > 0) {
                 
-            echo '<select name="id" id="id">';
+            echo '<select name="id" id="select" onchange="selectChanged()" onload="selectChanged()">';
+                    echo'<option value="0" >Seleziona una prenotazione</option>';
                 while($row2 = $resultpronotazioni -> fetch_assoc()) {
                         echo '<option id="id" name="id" value="'.$row2["id_prenotazione"].'">'.$row2["id_prenotazione"].'</option>';
                 }
                 
             echo '</select><br><br>';
-            echo '<input type="submit" value="Eliminina">';
+            echo '<input type="submit" id="elimina" value="Eliminina">';
             }else{
                 echo '</select><br><br>';
             }
-            
             echo '</form>';
-
             }else{
                header("location: admin.html");
                 echo "pass errata";

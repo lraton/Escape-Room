@@ -90,7 +90,7 @@
 
                 $to      = 'prolocosigillo@gmail.com';
                 $subject = 'Prenotazione effettuata';
-                $message = 'E stata effettuata una prenotazione per il giorno '.$_SESSION["data"].' alle ore '.$_SESSION["orario"].' per '.$_POST["posti"].' persone, da parte di '.$_SESSION["nome"].' '.$_SESSION["cognome"].'. Email:'.$_SESSION["email"].' Numero: '.$_SESSION["telefono"].'Per visualizzare la prenotazione visitare http://escaperoomsigillo.hostinggratis.it/admin.html, Nome: admin Password: admin123 ';
+                $message = 'E stata effettuata una prenotazione per il giorno '.$_SESSION["data"].' alle ore '.$_SESSION["orario"].' per '.$_POST["posti"].' persone, da parte di '.$_SESSION["nome"].' '.$_SESSION["cognome"].'. Email:'.$_SESSION["email"].' Numero: '.$_SESSION["telefono"].'Per visualizzare la prenotazione visitare https://prolocosigillo.altervista.org/admin.html, Nome: admin Password: admin123 ';
                 $headers = 'From: escaperoom@sigillo.it' . "\r\n" .
                     'Reply-To:' . "\r\n" .
                     'X-Mailer: PHP/' . phpversion();
