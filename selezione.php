@@ -57,7 +57,7 @@
             echo '<label for="orario">Scegli un orario:</label>';
             echo '<select name="orario" id="orario">';
 
-            $orario = "SELECT  orario, posti_liberi  FROM giornata WHERE data='".$row["data"]."'";
+            $orario = "SELECT  orario, posti_liberi  FROM giornata WHERE data='".$row["data"]."' ORDER BY orario";
             $resultorario = $mysqli->query($orario);
             if ($resultorario->num_rows > 0) {
                 while($row1 = $resultorario -> fetch_assoc()) {

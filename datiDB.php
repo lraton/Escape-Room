@@ -1,6 +1,6 @@
 <?php
-$mysql_host = "localhost"; // nome del server su cui gira MySQL
-$mysql_user = "prolocosigillo"; // nome utente MySQL
+$mysql_host = ""; // nome del server su cui gira MySQL
+$mysql_user = ""; // nome utente MySQL
 $mysql_password = ""; // password MySQL
-$mysql_database = "my_prolocosigillo"; //nome del database
+$mysql_database = ""; //nome del database
 ?>

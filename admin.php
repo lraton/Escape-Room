@@ -49,7 +49,7 @@
                 $_SESSION["login"]=1;
                 Echo "<h2>Lista prenotazioni</h2>";
 
-                $sql1 = "SELECT id_prenotazione, nome, cognome, email, numero, posti_prenotati, data, orario   FROM prenotazione,giornata WHERE prenotazione.id_giornata=giornata.id_giornata";
+                $sql1 = "SELECT id_prenotazione, nome, cognome, email, numero, posti_prenotati, data, orario   FROM prenotazione,giornata WHERE prenotazione.id_giornata=giornata.id_giornata ORDER BY data, orario";
                 $result1 = $mysqli->query($sql1);
                 echo '<table border=1 id="listaprenotazioni">';
                 echo '<tr>';
