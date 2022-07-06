@@ -4,6 +4,7 @@
 
 <head>
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style/stylelogin.css">
 
     <meta charset="UTF-8">
     <title> Escape Room </title>
@@ -11,16 +12,31 @@
 
 
 <body>
-    <form action="admin.php" method="post">
-
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" ><br><br>
-
-    <label for="pass">Password:</label>
-    <input type="password" id="pass" name="pass" ><br><br>
-
-    <input type="submit" value="Continua">
-    </form>
+    <div class="container">
+        <div class="screen">
+            <div class="screen__content">
+                <form class="login" action="admin.php" method="POST">
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input type="text" class="login__input" id="nome" name="nome" placeholder="User">
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-lock"></i>
+                        <input type="password" class="login__input" id="pass" name="pass" placeholder="Password">
+                    </div>
+                        <input type="submit"  class="button login__submit" class="button__text" value="Continua">				
+                </form>
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>		
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>		
+        </div>
+    </div>
+    
 </body>
+
 
 </html>
