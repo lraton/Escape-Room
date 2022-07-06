@@ -6,15 +6,25 @@ body {
   font-family: "Oswald", Helvetica, Arial, sans-serif;
   font-weight: 100;
   font-size: 30px;
-  line-height: 30px;
+  line-height: 60px;
   color: white;
   text-align: center;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  text-shadow: -2px 0 #000000, 0 2px #000000, 2px 0 #000000, 0 -2px #000000;
+}
+img{
+  width: 85%;
+}
+#iubenda-cs-paragraph,#iubenda-cs-title{
+  background-color:black;
+}
+#iubenda-cs-container{
+  height: 5%;
 }
 #intro{
-  font-family: "Cinzel", Helvetica, Arial, sans-serif;
+  font-family: "Times New Roman", Times, serif;
 }
 table{
   border: 5px solid #ccc;
@@ -63,15 +73,18 @@ input[type=submit]:hover {
   
 div {
     border-radius: 5px;
-    background-color: #f2f2f2;
+   /** background-color: #f2f2f2;**/
     padding: 20px;
 }
+#avadv-gpt-1{
+  background-color: transparent;
+}
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1080px) {
   body {
   background-image: url("../img/sfondoverticale.png");
-    font-size: 50px;
-    line-height: 150%;
+  font-size: 50px;
+  line-height: 60px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

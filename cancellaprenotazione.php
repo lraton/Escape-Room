@@ -33,10 +33,7 @@
 
         if ($result->num_rows > 0) {
             while($row = $result -> fetch_assoc()) {
-                $posti=$row["posti_prenotati"]+$row["posti_liberi"];
-                if($posti!=6){
-                    $posti=6;
-                }
+                $posti=1;
 
                 $sql1 = "UPDATE giornata SET posti_liberi= '".$posti."' WHERE id_giornata='".$row["id_giornata"]."'";
 

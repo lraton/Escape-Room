@@ -57,35 +57,75 @@
 </head>
 
 <body>
-    <p id="intro">'' Nel mezzo del cammin di un'estate febbrile, ti ritroverai all'interno di un cortile... </br>
-        Qualcosa lì vicino ti attirerà, un'antica cripta ti sorprenderà... </br>
-        Entrato, capirai con sorpresa infinita che la dritta via è ormai smarrita... </br>
-        Ahi, quanto a dir qual è è cosa dura, esta stanza angusta, intricata e scura, che al sol pensier ti invade la paura! </br>
-        Tant'è complicata che poco più è un forte, ma sebbene ne vedrai delle belle, con coraggio e astuzia riuscirai a riveder le stelle..."</p>
+    <img src="img/scritta2.png" alt="PULP OLD PUB">
+    <p id="intro">Il PULP OLD PUB è scenario di un duplice omicidio MAI risolto. </br>
+        50 minuti per scovare indizi, recuperare prove ed esaminare la scena del crimine</br>
+        RIUSCIRETE A PORTARE ALLA LUCE LA VERITÀ? </br>
     <form action="selezione.php" method="post">
         <table border="5" calss="table-responsive">
-            <tr><td> <input type="radio" name="date" value="2021-07-09" required >9 Luglio 2021</td><td><input type="radio" name="date" value="2021-07-10" required disabled>10 Luglio 2021</td><td><input type="radio" name="date" value="2021-07-11" required disabled>11 Luglio 2021</td></tr>
-            <tr><td><input type="radio" name="date" value="2021-07-16"required disabled>16 Luglio 2021</td> <td> <input type="radio" name="date" value="2021-07-17" required disabled>17 Luglio 2021</td><td><input type="radio" name="date" value="2021-07-18" required disabled>18 Luglio 2021</td></tr>
-            <tr><td><input type="radio" name="date" value="2021-07-23"required disabled>23 Luglio 2021</td><td><input type="radio" name="date" value="2021-07-24" required disabled>24 Luglio 2021</td><td> <input type="radio" name="date" value="2021-07-25" required disabled>25 Luglio 2021</td></tr>
-            <tr><td><input type="radio" name="date" value="2021-07-26"required disabled>26 Luglio 2021</td><td><input type="radio" name="date" value="2021-07-27"required disabled>27 Luglio 2021</td><td><input type="radio" name="date" value="2021-07-28" required disabled>28 Luglio 2021</td></tr>
-            <td> <input type="radio" name="date" value="2021-07-29"required disabled>29 Luglio 2021</td><td><input type="radio" name="date" value="2021-07-30" required disabled>30 Luglio 2021</td><td><input type="radio" name="date" value="2021-07-31" required disabled>31 Luglio 2021</td>
-        </table>
+    <?php
+        //Conenssione database
+        require "datiDB.php";
+        $mysqli = new mysqli($mysql_host, $mysql_user, $mysql_password,$mysql_database);
+
+        // Verifico se è connesso
+        if ($mysqli -> connect_errno) {
+        echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+        exit();
+        }
+        //Prova query
+        $sql = "SELECT data  FROM giornata where 1 group by data order by data";
+        $result = $mysqli->query($sql);
+        $i=0;
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result -> fetch_assoc()) {
+                if($i==0){
+                    echo '<tr>';
+                }
+                $datadivisa=explode("-",$row["data"]);
+                if($row["data"]>=date("Y-m-d") ){ //&& date("Y-m-d")>='2022-07-04'
+                    if($datadivisa[1]==7){
+                        echo '<td> <input type="radio" name="date" value="'. $row["data"].'" required >'. $datadivisa[2].'- LUGLIO -'. $datadivisa[0].'</td>';
+                    }else{
+                        echo '<td> <input type="radio" name="date" value="'. $row["data"].'" required >'. $datadivisa[2].'- AGOSTO -'. $datadivisa[0].'</td>';
+                
+                    }
+                }else{
+                    if($datadivisa[1]==7){
+                        echo '<td> <input type="radio"  disabled required >'. $datadivisa[2].'- LUGLIO -'. $datadivisa[0].'</td>';
+                    }else{
+                        echo '<td> <input type="radio"  disabled required >'. $datadivisa[2].'- AGOSTO -'. $datadivisa[0].'</td>';
+                
+                    }
+                }
+                $i++;
+                if($i==3){
+                    echo '</tr>';
+                    $i=0;
+                }
+
+            }
+        } else {
+            echo "<h3>Ops qualcosa è andato storto</h3>";
+        }
+    ?>
+       </table>
     <input type="submit" value="Continua">
     </form>
 
     <h3>Regolamento</h3>
     <p>-Escape room adatta a tutte le persone maggiorenni</br>
-        -Il gioco si svolge a squadre da un minimo di 2 componenti fino ad un massimo di 6</br>
-        -La durata del l’escape è di 60 minuti</br>
+        -Il gioco si svolge a squadre da un minimo di 2 e senza un numero massimo</br>
+        -La durata del l’escape è di 50 minuti</br>
         -L’obiettivo è quello di risolvere tutti gli enigmi che separano la squadra dalla soluzione del gioco</br>
-        -La puntualità è d’obbligo: la squadra dovrà presentarsi nel luogo indicato 15 minuti prima dell’inizio del gioco</br>
+        -La puntualità è d’obbligo: la squadra dovrà presentarsi nel luogo indicato 10 minuti prima dell’inizio del gioco</br>
         -È severamente vietato fotografare qualsiasi luogo della room escape e danneggiare i relativi meccanismi e oggetti presenti al suo interno</br>
         -Durante in gioco sarete monitorati attraverso delle telecamere</br>
-        -Il costo per partecipare è di 10€ a persona e la quota dovrà essere versate prima dell’inizio del gioco</br>
-        -È obbligatorio l’utilizzo di mascherine per tutta la durata del gioco</br>
+        -Il costo per partecipare è di 60€ fino a 5 giocatori, più di 5 12€ a testa, per i tesserati ProLoco 5€ di sconto (presentare la tessera il giorno del gioco), e la quota dovrà essere versata prima dell’inizio del gioco</br>
+        -È consigliato l’utilizzo di mascherine</br>
     </p>
         <h4>ATTENZIONE! SE NON PUOI PARTECIPARE RICORDATI DI AVVISARCI TEMPESTIVAMENTE AI SEGUENTI NUMERI </br>
-            334/9679384 Camilla</br>
             334/2326047 Alessandro</h4>
             <script>!function(d,l,e,s,c){e=d.createElement("script");e.src="//ad.altervista.org/js.ad/size=728X90/?ref="+encodeURIComponent(l.hostname+l.pathname)+"&r="+Date.now();s=d.scripts;c=d.currentScript||s[s.length-1];c.parentNode.insertBefore(e,c)}(document,location)</script>
             <a href="https://www.iubenda.com/privacy-policy/40648314" rel="noreferrer nofollow" target="_blank">Privacy Policy</a>

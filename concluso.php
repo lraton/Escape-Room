@@ -29,13 +29,11 @@
 
         if(isset($_SESSION["concluso"]) && $_SESSION["concluso"]==0){
 
-            $sql = "SELECT id_giornata, posti_liberi  FROM giornata WHERE data='".$_SESSION["data"]."' AND orario='".$_SESSION["orario"]."' AND posti_liberi>=".$_POST["posti"];
+            $sql = "SELECT id_giornata, posti_liberi  FROM giornata WHERE data='".$_SESSION["data"]."' AND orario='".$_SESSION["orario"]."' AND posti_liberi>=1";
             $result = $mysqli->query($sql);
             if ($result->num_rows > 0) {
                 $row = $result -> fetch_assoc();
-
-                if($row["posti_liberi"]>=$_POST["posti"]){
-                    $postiavanzati=$row["posti_liberi"]-$_POST["posti"];
+                    $postiavanzati=0;
 
                     //Modifico i posti disponibli
                     $aggiornaposti = "UPDATE giornata SET posti_liberi = ".$postiavanzati." WHERE giornata.id_giornata='".$row["id_giornata"]."'";
@@ -54,12 +52,6 @@
                         echo "Errore nella prenotazione" . $mysqli->error;
                         $_SESSION["errore"]="1";
                     }
-
-                    
-                }else{
-                    echo"<h3>Posti non disponibili</h3>";
-                    $_SESSION["errore"]="1";
-                }
             }else{
                 echo '<h3>Ops qualcosa è andato storto, controlla se i posti prenotabili sono giusti</h3>';
                 $_SESSION["errore"]="1";
@@ -87,7 +79,7 @@
                     'X-Mailer: PHP/' . phpversion();
 
                 mail($to, $subject, $message, $headers);
-
+                
                 $to      = 'prolocosigillo@gmail.com';
                 $subject = 'Prenotazione effettuata';
                 $message = 'E stata effettuata una prenotazione per il giorno '.$_SESSION["data"].' alle ore '.$_SESSION["orario"].' per '.$_POST["posti"].' persone, da parte di '.$_SESSION["nome"].' '.$_SESSION["cognome"].'. Email:'.$_SESSION["email"].' Numero: '.$_SESSION["telefono"].'Per visualizzare la prenotazione visitare https://prolocosigillo.altervista.org/admin.html, Nome: admin Password: admin123 ';
@@ -107,7 +99,7 @@
     }
 ?>
 
-<a href=index.html>
+<a href=index.php>
     <input type="button" value="Home">
 </a>
 

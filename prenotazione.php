@@ -7,6 +7,7 @@
 <html lang="it">
 
 <head>
+    
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style/style.css">
     <meta charset="UTF-8">
@@ -45,33 +46,38 @@
         echo "<h3>Orario: ".$_POST["orario"]."<h3>";
 
         echo '<form action="concluso.php" method="post">';
-        $sql = "SELECT posti_liberi  FROM giornata WHERE data='".$_POST["data"]."' AND orario='".$_POST["orario"]."'";
-        $result = $mysqli->query($sql);
-        if ($result->num_rows > 0) {
-            while($row = $result -> fetch_assoc()) {
-                echo "<h3>Posti liberi: ".$row["posti_liberi"]."<h3>";
-                $postiliberi=$row["posti_liberi"];
-            }
-        }else{
-            echo 'Nessun risultato';
-        }
-
-
         echo '<label for="posti">Quanti posti vuoi prenotare?</label> <br><br>';
+
         echo '<select name="posti" id="posti">';
-        for ($i=$postiliberi; $i>1; $i--){
-            echo '<option id="posti" name="posti" value="'.$i.'" required>'.$i.'</option>';
+        for ($i=0; $i<=100; $i++){
+            echo '<option value="'.$i.'" required>'.$i.'</option>';
         }
-                
         echo '</select><br><br>';
+
+        //echo '<input type="text" id="posti" name="posti"><br>';
 
         echo '<input type="submit" value="Prenota">';
         echo '</form>';
+
+        echo 'Costo approsimativo (senza sconti): <a id=\'prezzo\'></a>';
     }else{
         echo "<h3>Ops qualcosa è andato storto</h3>";
     }
 ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+    $("#posti").bind("change keyup", function(event){
+        var a = $(this).val();
+        var prezzo=0;
+        if(a<=5){
+            prezzo = 60;
+        }else{
+            prezzo = 12*a;
+        }
+    $('#prezzo').text(prezzo+'€'); 
 
+    });
+    </script>
 </body>
 
 </html>
