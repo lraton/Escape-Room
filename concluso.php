@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="style/style.css">
     <meta charset="UTF-8">
     <title> Escape Room </title>
+    <style>
+        body {
+        background-position:0 0;
+        }
+    </style>
 </head>
+
 
 
 <body>

@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="style/style.css">
     <meta charset="UTF-8">
     <title> Escape Room Admin</title>
+    <style>
+        body {
+        background-position:0 0;
+        }
+    </style>
 </head>
 
 <script>
